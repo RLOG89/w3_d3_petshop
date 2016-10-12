@@ -41,7 +41,7 @@ class Pet
 
   def self.all
     sql = "select * from pets"
-    pets = SqlRunner.run(sql).map{|pet| Pet.new(pet)}
+    pets = SqlRunner.run( sql ).map{ |pet| Pet.new(pet) }
     return pets
   end
 
