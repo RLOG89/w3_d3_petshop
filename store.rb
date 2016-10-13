@@ -7,25 +7,29 @@ class Store
 
   def initialize(options)
     @id = options['id'].to_i if options['id'] != nil
+    @name = options['name']
     @address = options['address']
     @type = options['type']
   end
 
   def save
     sql = "INSERT INTO stores( 
+    name,
     address,
     type
     )
     VALUES(
+    '#{@name}',
     '#{@address}',
     '#{@type}'
     ) RETURNING * "
     store = SqlRunner.run( sql ).first
     @id = store['id']
+    puts "Store #{@id} added!"
   end
 
   def update
-    sql = "UPDATE stores SET address = '#{@address}' , type = '#{@type}' WHERE id = #{@id} "
+    sql = "UPDATE stores SET name = '#{@name}', address = '#{@address}' , type = '#{@type}' WHERE id = #{@id} "
     SqlRunner.run( sql )
     puts "Edited store: #{@id}"
   end

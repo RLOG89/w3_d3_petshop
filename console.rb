@@ -2,19 +2,15 @@ require_relative 'pet'
 require_relative 'store'
 require 'pry-byebug'
 
-store1 = Store.new( {'address' => "1 Castle Terrace", 'type' => 'dog'} )
-
-puts "store1 added!"
+store1 = Store.new( {'name' => "PetsPetPets", 'address' => "1 Castle Terrace", 'type' => "dog"} )
 
 store1.save()
 
-store2 = Store.new( {'address' => "3 Lady Lawson Street", 'type' => "Monkeys"} )
+store2 = Store.new( {'name' => "All of the Pets", 'address' => "3 Lady Lawson Street", 'type' => "Monkeys"} )
 
 store2.save
 store1.address = "2 London Road"
 store1.update 
-
- 
 
 pet1 = Pet.new( {'name' => "Tony the Tiger", 'type' => "St Bernard", 'store_id' => store1.id} )
 pet1.save

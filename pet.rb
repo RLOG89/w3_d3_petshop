@@ -25,6 +25,7 @@ class Pet
     ) RETURNING * "
     pet = SqlRunner.run( sql ).first
     @id = pet['id']
+    puts "Pet #{@id} added"
   end
 
   def update
